@@ -1,1 +1,35 @@
-<p>home works!</p>
+<h1>Territories</h1>
+<span>Here are the list of territories</span>
+<div>
+    <ul>
+      <ng-container *ngFor="let territory of territories">
+        <li>
+          <span (click)="toggleExpand(territory)">
+            <span *ngIf="territory.children" [class]="'caret ' + (territory.expanded ? 'down' : '')"></span>
+            {{ territory.name }}
+          </span>
+          <ul *ngIf="territory.expanded && territory.children">
+            <ng-container *ngFor="let child of territory.children">
+              <ng-container *ngTemplateOutlet="territoryTemplate; context: { $implicit: child }"></ng-container>
+            </ng-container>
+          </ul>
+        </li>
+      </ng-container>
+    </ul>
+    
+    <!-- Territory template for recursion of children of children -->
+    <ng-template #territoryTemplate let-territory>
+      <li>
+        <span (click)="toggleExpand(territory)">
+        <span *ngIf="territory.children" [class]="'caret ' + (territory.expanded ? 'down' : '')"></span>
+          {{ territory.name }}
+        </span>
+        <ul *ngIf="territory.expanded && territory.children">
+          <ng-container *ngFor="let child of territory.children">
+            <ng-container *ngTemplateOutlet="territoryTemplate; context: { $implicit: child }"></ng-container>
+          </ng-container>
+        </ul>
+      </li>
+    </ng-template>
+  </div>
+<button (click)="signOut()" class="btn btn-secondary">Sign out</button>

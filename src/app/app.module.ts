@@ -12,14 +12,14 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

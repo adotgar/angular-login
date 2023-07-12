@@ -43,7 +43,7 @@ export class LoginComponent{
       }
 
       // Send request to authenticate user
-      this.loginService.getUser(data)
+      this.loginService.authenticateUser(data)
       .pipe(
         catchError((err)=>{
           if(err && err.status == 404 && err.error.message){

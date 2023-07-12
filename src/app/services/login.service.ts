@@ -20,7 +20,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  public getUser(data?: any){
+  public authenticateUser(data?: any){
     return this.http.post(this.signInApi.toString(), data, this.httpOptions)
   }
 
